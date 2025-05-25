@@ -29,11 +29,12 @@ export async  function POST(req: NextRequest) {
     const tokenData = {id: user._id, name: user.name, email: user.email};
 
     //creating a token - it includes token data, token secret key, and expiry time
-    const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {expiresIn: "1h"});
-    const response = NextResponse.json({token, message: "Logged in successfully", id: user._id}, {status: 200});
+    const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {expiresIn: "30h"});
+    const response = NextResponse.json({token, message: "Logged in successfully", user: {id: user._id}}, {status: 200});
     response.cookies.set("token", token, {
         httpOnly: true,
-    })
+        // maxAge: 60 * 1000
+    }); // 1min
     console.log(reqBody)
     return response
 
