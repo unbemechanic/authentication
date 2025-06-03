@@ -26,7 +26,7 @@ export default function Login() {
       console.log(res.data);
       // Redirect or show success
       toast.success("Login Success");
-      // Redirect to dashboard
+      // Redirect to dynamic route
       router.push(`/profile/${userData.id}`);
     } catch (error: any) {
       console.error("Login failed:", error);

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
+
 export default function SignUp() {
   const [user, setUser] = React.useState({
     email: "",
@@ -14,6 +15,7 @@ export default function SignUp() {
   const [disButton, setDisButton] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
+
   const onSignUp = async () => {
     try {
       setLoading(true);
